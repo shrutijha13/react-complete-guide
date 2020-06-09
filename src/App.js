@@ -1,23 +1,8 @@
 import React, { Component } from 'react';
-//import './App.css';
 import styled from 'styled-components';
 import classes from './App.css';
 import Person from './Person/Person';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
-
-
-// const StyledButton = styled.button`
-  //   background-color: ${props => props.alt ? 'red' : 'green'};
-  //   font: inherit;
-  //   border: 1px solid blue;
-  //   padding: 8px;
-  //   cursor: pointer;
-  //   color: white;
-    
-  //   &:hover {
-  //     background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-  //     color: black;
-  // }`
 
 class App extends Component{
   state  = {
@@ -30,7 +15,6 @@ class App extends Component{
   }
 
   deletePersonHandler = (personIndex) => {
-    //const persons = this.state.persons.slice();
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({persons: persons});
@@ -45,8 +29,6 @@ class App extends Component{
       ...this.state.persons[personIndex]
     };
 
-    
-    //const person = Object.assign({}, this.state.persons[personIndex]);
     person.name = event.target.value;
     const persons = [...this.state.persons];
     persons[personIndex] = person;
@@ -60,19 +42,6 @@ class App extends Component{
   }
 
   render () {
-    // const style = {
-    //   backgroundColor: 'green',
-    //   font: 'inherit',
-    //   border: '1px solid blue',
-    //   padding: '8px',
-    //   cursor: 'pointer',
-    //   color: 'white',
-    //   ':hover': {
-    //     backgroundColor: 'lightgreen',
-    //     color: 'black'
-    //   }
-    // };
-
     let persons = null;
     let btnClass = [classes.Button];
     if (this.state.showPersons) {
@@ -89,11 +58,6 @@ class App extends Component{
            })}
           </div>
       );
-      // style.backgroundColor = 'red';
-      // style[':hover'] = {
-      //   backgroundColor: 'salmon',
-      //   color: 'black'
-      // };
       btnClass.push(classes.Red);
     }
     const assignedClasses = [];
@@ -114,7 +78,6 @@ class App extends Component{
           {persons}
         </div>
     );
-    //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?'))
   }
 }
 
