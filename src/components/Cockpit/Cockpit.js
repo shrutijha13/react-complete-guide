@@ -7,10 +7,21 @@ const cockpit = (props) => {
     console.log('[Cockpit.js] useEffect');
     //Executes for every render cycle(componentDidMount + componentDidUpdate)
     //Add empty list to run once, otherwise add changed dependency(one or multiple)
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       alert('Saved data to cloud!');
-    }, 1000);
+    }, 3000);
+    return () => {
+      clearTimeout(timer); // clearing timer so alert doesn't show if cockpit is removed.
+      console.log('[Cockpit.js] cleanup work in useEffect');
+    };
   }, []);
+
+  useEffect(() => {
+    console.log('[Cockpit.js] 2nd useEffect');
+    return () => {
+      console.log('[Cockpit.js] cleanup work in 2nd useEffect');
+    }
+  })
 
   const assignedClasses = [];
   let btnClass = '';
